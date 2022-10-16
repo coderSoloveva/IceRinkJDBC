@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Component
@@ -78,7 +77,7 @@ public class CommentDao {
         preparedStatement.setString(3, commentDtoRequest.getUser_name());
         preparedStatement.setTimestamp(4, commentDtoRequest.getTime());
         preparedStatement.execute();
-        CommentDtoResponse commentDtoResponse = commentDtoResponseToRequest(commentDtoRequest);
+        CommentDtoResponse commentDtoResponse = commentDtoRequestToResponse(commentDtoRequest);
         ResultSet resultSetKeys = preparedStatement.getGeneratedKeys();
         if (resultSetKeys.next()){
             commentDtoResponse.setId(resultSetKeys.getInt("id"));
@@ -86,7 +85,7 @@ public class CommentDao {
         return commentDtoResponse;
     }
 
-    private CommentDtoResponse commentDtoResponseToRequest(CommentDtoRequest commentDtoRequest) {
+    private CommentDtoResponse commentDtoRequestToResponse(CommentDtoRequest commentDtoRequest) {
         CommentDtoResponse commentDtoResponse = new CommentDtoResponse();
         commentDtoResponse.setText(commentDtoRequest.getText());
         commentDtoResponse.setIce_rink_id(commentDtoRequest.getIce_rink_id());
