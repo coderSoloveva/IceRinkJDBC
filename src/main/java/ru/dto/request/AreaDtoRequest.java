@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class AreaDtoRequest {
     @NotNull
-    @NotEmpty(message = "Name should not be empty")
+    @NotEmpty
     String name;
     @NotNull
     Integer city_id;

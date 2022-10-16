@@ -11,6 +11,6 @@ public class ClosingDateDto {
     @NotNull
     Integer id;
     @NotNull
-    @NotEmpty(message = "Date should not be empty")
+    @NotEmpty
     Date closing_date;
 }
